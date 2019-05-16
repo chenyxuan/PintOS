@@ -1,0 +1,77 @@
+cd build && make check
+make[1]: Entering directory '/home/wymt/Code/OperatingSystem2019/pintos/src/filesys/build'
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/args-none -a args-none -- -q  -f run args-none < /dev/null 2> tests/userprog/args-none.errors > tests/userprog/args-none.output
+perl -I../.. ../../tests/userprog/args-none.ck tests/userprog/args-none tests/userprog/args-none.result
+[31mFAIL tests/userprog/args-none
+[0mKernel panic in run: PANIC at ../../userprog/pagedir.c:66 in lookup_page(): assertion `pd != NULL' failed.
+Call stack: 0xc0029919 0x705f7075
+Translation of call stack:
+In kernel.o:
+0xc0029919: debug_panic (.../../lib/kernel/debug.c:38)
+0x705f7075: (unknown)
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/args-single -a args-single -- -q  -f run 'args-single onearg' < /dev/null 2> tests/userprog/args-single.errors > tests/userprog/args-single.output
+perl -I../.. ../../tests/userprog/args-single.ck tests/userprog/args-single tests/userprog/args-single.result
+[31mFAIL tests/userprog/args-single
+[0mKernel panic in run: PANIC at ../../userprog/pagedir.c:66 in lookup_page(): assertion `pd != NULL' failed.
+Call stack: 0xc0029919 0x705f7075
+Translation of call stack:
+In kernel.o:
+0xc0029919: debug_panic (.../../lib/kernel/debug.c:38)
+0x705f7075: (unknown)
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/args-multiple -a args-multiple -- -q  -f run 'args-multiple some arguments for you!' < /dev/null 2> tests/userprog/args-multiple.errors > tests/userprog/args-multiple.output
+perl -I../.. ../../tests/userprog/args-multiple.ck tests/userprog/args-multiple tests/userprog/args-multiple.result
+[31mFAIL tests/userprog/args-multiple
+[0mKernel panic in run: PANIC at ../../userprog/pagedir.c:66 in lookup_page(): assertion `pd != NULL' failed.
+Call stack: 0xc0029919 0x705f7075
+Translation of call stack:
+In kernel.o:
+0xc0029919: debug_panic (.../../lib/kernel/debug.c:38)
+0x705f7075: (unknown)
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/args-many -a args-many -- -q  -f run 'args-many a b c d e f g h i j k l m n o p q r s t u v' < /dev/null 2> tests/userprog/args-many.errors > tests/userprog/args-many.output
+perl -I../.. ../../tests/userprog/args-many.ck tests/userprog/args-many tests/userprog/args-many.result
+[31mFAIL tests/userprog/args-many
+[0mKernel panic in run: PANIC at ../../userprog/pagedir.c:66 in lookup_page(): assertion `pd != NULL' failed.
+Call stack: 0xc0029919 0x705f7075
+Translation of call stack:
+In kernel.o:
+0xc0029919: debug_panic (.../../lib/kernel/debug.c:38)
+0x705f7075: (unknown)
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/args-dbl-space -a args-dbl-space -- -q  -f run 'args-dbl-space two  spaces!' < /dev/null 2> tests/userprog/args-dbl-space.errors > tests/userprog/args-dbl-space.output
+perl -I../.. ../../tests/userprog/args-dbl-space.ck tests/userprog/args-dbl-space tests/userprog/args-dbl-space.result
+[31mFAIL tests/userprog/args-dbl-space
+[0mKernel panic in run: PANIC at ../../userprog/pagedir.c:66 in lookup_page(): assertion `pd != NULL' failed.
+Call stack: 0xc0029919 0x705f7075
+Translation of call stack:
+In kernel.o:
+0xc0029919: debug_panic (.../../lib/kernel/debug.c:38)
+0x705f7075: (unknown)
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/sc-bad-sp -a sc-bad-sp -- -q  -f run sc-bad-sp < /dev/null 2> tests/userprog/sc-bad-sp.errors > tests/userprog/sc-bad-sp.output
+perl -I../.. ../../tests/userprog/sc-bad-sp.ck tests/userprog/sc-bad-sp tests/userprog/sc-bad-sp.result
+[31mFAIL tests/userprog/sc-bad-sp
+[0mKernel panic in run: PANIC at ../../userprog/pagedir.c:66 in lookup_page(): assertion `pd != NULL' failed.
+Call stack: 0xc0029919 0x705f7075
+Translation of call stack:
+In kernel.o:
+0xc0029919: debug_panic (.../../lib/kernel/debug.c:38)
+0x705f7075: (unknown)
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/sc-bad-arg -a sc-bad-arg -- -q  -f run sc-bad-arg < /dev/null 2> tests/userprog/sc-bad-arg.errors > tests/userprog/sc-bad-arg.output
+perl -I../.. ../../tests/userprog/sc-bad-arg.ck tests/userprog/sc-bad-arg tests/userprog/sc-bad-arg.result
+[31mFAIL tests/userprog/sc-bad-arg
+[0mKernel panic in run: PANIC at ../../userprog/pagedir.c:66 in lookup_page(): assertion `pd != NULL' failed.
+Call stack: 0xc0029919 0x705f7075
+Translation of call stack:
+In kernel.o:
+0xc0029919: debug_panic (.../../lib/kernel/debug.c:38)
+0x705f7075: (unknown)
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/sc-boundary -a sc-boundary -- -q  -f run sc-boundary < /dev/null 2> tests/userprog/sc-boundary.errors > tests/userprog/sc-boundary.output
+perl -I../.. ../../tests/userprog/sc-boundary.ck tests/userprog/sc-boundary tests/userprog/sc-boundary.result
+[31mFAIL tests/userprog/sc-boundary
+[0mKernel panic in run: PANIC at ../../userprog/pagedir.c:66 in lookup_page(): assertion `pd != NULL' failed.
+Call stack: 0xc0029919 0x705f7075
+Translation of call stack:
+In kernel.o:
+0xc0029919: debug_panic (.../../lib/kernel/debug.c:38)
+0x705f7075: (unknown)
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/sc-boundary-2 -a sc-boundary-2 -- -q  -f run sc-boundary-2 < /dev/null 2> tests/userprog/sc-boundary-2.errors > tests/userprog/sc-boundary-2.output
+../../tests/Make.tests:74: recipe for target 'tests/userprog/sc-boundary-2.output' failed
+../Makefile.kernel:10: recipe for target 'check' failed
