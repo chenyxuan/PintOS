@@ -98,7 +98,12 @@ byte_to_sector (struct inode *inode, off_t pos, bool create)
               
               if (t1[i] == -1)
                 {
-                  ASSERT (free_map_allocate (1, &t1[i]));
+                  if (!free_map_allocate (1, &t1[i]))
+                  {
+                    free(t1);
+                    free(t2);
+                    return -1;
+                  }
                   cache_write (t1[i], empty);
                 }
                 
@@ -107,7 +112,11 @@ byte_to_sector (struct inode *inode, off_t pos, bool create)
                 {
                   if (t2[j] == -1)
                     {
-                      ASSERT (free_map_allocate (1, &t2[j]));
+                      if (!free_map_allocate (1, &t2[j])) {
+                        free(t1);
+                        free(t2);
+                        return -1;
+                      }
                       cache_write (t2[j], zeros);
                     }
                 }
@@ -183,13 +192,25 @@ inode_create (block_sector_t sector, off_t length)
                 {
                   off_t r = (i == t1_t ? t2_t : TABLE_SIZE - 1);
               
-                  ASSERT (free_map_allocate (1, &t1[i]));
+                  if (!free_map_allocate (1, &t1[i]))
+                  {
+                    free(t1);
+                    free(t2);
+                    free (disk_inode);
+                    return false;
+                  }
                   cache_write(t1[i], empty);
                  
                   cache_read (t1[i], t2);
                   for(j = 0; j <= r; j++)
                     {
-                      ASSERT (free_map_allocate (1, &t2[j]));
+                      if (!free_map_allocate (1, &t2[j]))
+                      {
+                        free(t1);
+                        free(t2);
+                        free (disk_inode);
+                        return false;
+                      }
                       cache_write(t2[j], zeros);
                     }
                   cache_write (t1[i], t2);

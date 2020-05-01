@@ -1,0 +1,7 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="UserProg" type="CLion_Remote" remoteCommand="localhost:1234" symbolFile="$PROJECT_DIR$/userprog/build/kernel.o" sysroot="">
+    <pathMapping remote=":/abc" local="$PROJECT_DIR$/" />
+    <pathMapping remote=":/abcd" local="$PROJECT_DIR$/tests/userprog" />
+    <method v="2" />
+  </configuration>
+</component>
